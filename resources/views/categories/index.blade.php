@@ -2,8 +2,8 @@
 
     @section('content')
     <div class="container">
-        <h1>Produtos</h1>
-        <a href="{{ route('productsCreate') }}" class="btn btn-success">Adicionar</a>
+        <h1>Categorias</h1>
+        <a href="{{ route('categoriesCreate') }}" class="btn btn-success">Adicionar</a>
         <hr>
             @if (Session::has('sucess'))
             <div class="alert alert-success">
@@ -22,28 +22,24 @@
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($products as $product)
+                    @foreach ($categories as $category)
                     <tr>
-                        <td>{{ $product->id}}</td>
-                        <td>{{ $product ->name }}</td>
-                        <td>R$ {{ $product ->price }}</td>
-                        <td>{{ $product ->quantity}}</td>
+                        <td>{{ $category->id}}</td>
+                        <td>{{ $category->name }}</td>
                         <td>
                             <div class="d-flex">
-                                <a href="{{ route('productsEdit', ['id' => $product->id]) }}" class="btn btn-primary mx-1">Editar</a>
-                                <form action="{{route('productsDelete')}}" method="POST">
+                                <a href="{{ route('categoriesEdit', ['id' => $category->id]) }}" class="btn btn-primary mx-1">Editar</a>
+                                <form action="{{route('categoriesDelete')}}" method="POST">
                                     @method('DELETE')
                                     @csrf
 
-                                    <input type="hidden" name="id" value="{{ $product->id}}">
+                                    <input type="hidden" name="id" value="{{ $category->id}}">
 
-                                    <button type="submit" class="btn btn-danger mx-1" onclick="return confirm('Tem certeza que queres excluir?');">
+                                    <button type="submit" class="btn btn-danger mx-1" onclick="return confirm('Tem certeza que queres excluir estes categoria?');">
                                         Excluir
                                     </button>
                                 </form>

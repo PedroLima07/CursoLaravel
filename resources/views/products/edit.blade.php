@@ -1,8 +1,8 @@
-    @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
-    <h1>Novo Produto</h1>
+    <h1>Editar Produto</h1>
     <a href="{{ route('products') }}" class="btn btn-success">Voltar</a>
     <hr>
 
@@ -26,32 +26,33 @@
     </div>     
     @endif
 
-    <form action="{{ route('productsStore') }}" method="POST">
+    <form action="{{ route('productsUpdate', $products->id) }}" method="POST">
+        @method('PUT')
         @csrf
 
         <div class="mb-3">
             <label class="form-label">Nome: *</label>
-            <input type="text" name="name" class="form-control">
+            <input type="text" name="name" class="form-control" value="{{ $products->name }}">
         </div>
 
                 
         <div class="mb-3">
             <label class="form-label">Preço: *</label>
-            <input type="text" name="price" class="form-control">
+            <input type="text" name="price" class="form-control" value="{{ $products->price }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Quantidade: *</label>
-            <input type="text" name="quantity" class="form-control">
+            <input type="text" name="quantity" class="form-control" value="{{ $products->quantity }}">
         </div>
 
         <div class="mb-3">
             <label class="form-label">Descrição:</label>
-            <textarea name="description" class="form-control" rows="5"></textarea>
+            <textarea name="description" class="form-control" rows="5"> {{ $products->description }}</textarea>
         </div>
 
         <div class="mb-3">
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
         </div>
     </form>
 </div>

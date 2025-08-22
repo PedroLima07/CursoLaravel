@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <h1>Novo Produto</h1>
-    <a href="{{ route('products') }}" class="btn btn-success">Voltar</a>
+    <h1>Nova Categoria</h1>
+    <a href="{{ route('categories') }}" class="btn btn-success">Voltar</a>
     <hr>
 
     @if ($errors->any())
@@ -26,28 +26,12 @@
     </div>     
     @endif
 
-    <form action="{{ route('productsStore') }}" method="POST">
+    <form action="{{ route('categoriesStore') }}" method="POST">
         @csrf
 
         <div class="mb-3">
             <label class="form-label">Nome: *</label>
             <input type="text" name="name" class="form-control">
-        </div>
-
-                
-        <div class="mb-3">
-            <label class="form-label">Preço: *</label>
-            <input type="text" name="price" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Quantidade: *</label>
-            <input type="text" name="quantity" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Descrição:</label>
-            <textarea name="description" class="form-control" rows="5"></textarea>
         </div>
 
         <div class="mb-3">

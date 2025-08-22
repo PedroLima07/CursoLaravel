@@ -35,4 +35,21 @@ class ProductsController extends Controller
         Session::flash($created ['status'], $created ['message']);
         return redirect()->back();
     }
+
+    public function edit(int $id):View {
+        $products = $this->productsService->findById($id);
+        return view ('products.edit', compact('products'));
+    }
+
+    public function update(ProductsRequest $request, int $id): RedirectResponse{
+        $updated = $this->productsService->update($request->all(), $id);
+        Session::flash($updated ['status'], $updated ['message']);
+        return redirect()->back();
+    }
+
+    public function delete(Request $request): RedirectResponse {
+        $deleted = $this->productsService->delete($request-> id);
+        Session::flash($deleted ['status'], $deleted ['message']);
+        return redirect()->back();
+    }
 }
